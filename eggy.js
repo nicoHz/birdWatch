@@ -1,10 +1,10 @@
-var umbrella = document.querySelector("#umbrella");
-umbrella.style.left="800px"; // x
-umbrella.style.top="500px";  // y
+var bird1 = document.querySelector("div");
+bird1.style.left="800px"; // x
+bird1.style.top="500px";  // y
 
 var startTime = Date.now(); // in ms
 
-setInterval( function() {
+setInterval(function() {
 	var t = Date.now() - startTime;
 
 	var ax = 10 / 70 / 1000;
@@ -25,7 +25,7 @@ setInterval( function() {
 	x = x + xk;
 	y = y + yk;
 
-	umbrella.style.left= x + "px"; // x
-	umbrella.style.top= y + "px";  // y
-	//umbrella.style.opacity= opacity; 
+	bird1.style.left= x + "px"; // x
+	bird1.style.top= y + "px";  // y
+	//bird1.style.opacity= opacity; 
 }, 1000 / 52);

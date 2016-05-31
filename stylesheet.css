@@ -1,14 +1,11 @@
-i.material-icons {
-	color: GoldenRod;
-	font-size: 300px;
-}
 
 body {
 	background-color: DodgerBlue;
 }
 
-#umbrella {
-	top: 150px;
-	left: 250px;
-	position: absolute;	
-}
+div {
+ display: block;
+ position: absolute;
+ top: 330px;
+ left: 460;
+ }
