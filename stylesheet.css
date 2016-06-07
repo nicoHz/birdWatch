@@ -1,11 +1,21 @@
 
-body {
+ body {
 	background-color: DodgerBlue;
 }
+
 
 div {
  display: block;
  position: absolute;
  top: 330px;
  left: 460;
+ }
+
+
+ #animation img { 
+	display: none;
+ }
+
+ #animation img:first-child {
+	display: block;
  }
