@@ -8,19 +8,19 @@ onload = function startAnimation() {
 	}, 150);
 }
 
-//	var backgroundMove = document.querySelector("html");
-//	var x = 1;
-//	var v = 4;
-//	var startTime = Date.now(); 
-//	timer = setInterval(function() {
-//		var t = Date.now() - startTime;
-//		x = v * t;
-//		himmel.style.left = x + "px";
-//		if (x > 800) {
-//			startTime = Date.now();
-//		}
-//	})
-//}
+var himmel = document.querySelector("html");
+var x = 1;
+var v = 4;
+var startTime = Date.now(); 
+timer = setInterval(function() {
+	var t = Date.now() - startTime;
+	x = v * t - 150;
+	himmel.style.backgroundPosition = x + "px";
+	if (x > 0) {
+		startTime = Date.now();
+	}
+}, 1000 / 50);
+
 
 var frames = document.querySelector("div");
 	frames.style.top = "400px"; 
