@@ -1,4 +1,4 @@
-onload = function startAnimation() {
+window.onload = function startAnimation() {
 	var frames = document.getElementById("animation").children;
 	var frameCount = frames.length;
 	var i = 0;
@@ -8,46 +8,37 @@ onload = function startAnimation() {
 	}, 150);
 }
 
-var himmel = document.querySelector("html");
-var x = 1;
-var v = 4;
-var startTime = Date.now(); 
-timer = setInterval(function() {
-	var t = Date.now() - startTime;
-	x = v * t - 150;
-	himmel.style.backgroundPosition = x + "px";
-	if (x > 0) {
-		startTime = Date.now();
-	}
-}, 1000 / 50);
+//var himmel = document.querySelector("html");
+//var x = 1;
+//var v = 2;
+//var startTime = Date.now(); 
+//timer = setInterval(function() {
+//	var t = Date.now() - startTime;
+//	x = v * t - 155;
+//	himmel.style.backgroundPosition = x + "px";
+//	if (x > 0) {
+//		startTime = Date.now();
+//	}
+// }, 1000 / 50);
 
 
-var frames = document.querySelector("div");
-	frames.style.top = "400px"; 
+var frames = document.querySelector("#animation");
+	frames.style.top = "70px"; 
 	var x = 1;
-	var v = .01;
+	var v = .1;
 	var startTime = Date.now(); 
 	setInterval(function() { 
 		var t = Date.now() - startTime;
-		x = v * t;
-		frames.style.left = x + "px"; 
-		if (x > 400) {
+		x = v * t - 200;
+
+//	var xk = Math.cos( t * Math.PI * 2) * t / 2000 * 100 + 100;
+		frames.style.right= x + "px"; 
+		if (x > 1600) {
 			startTime = Date.now();
 		}
 	}, 10);
 
-//	var ax = 10 / 70 / 1000;
-//	var ay = 10 / 40 / 1000;
-
-//	var vx = ax * t;	// pixel per ms
-//	var vy = ay * t;
-
-//	var x = t * vx;
-//	var y = t * vy;
-
-//	var xk = Math.cos( t / 1000 * Math.PI * 2) * t / 2000 * 100 + 100;
-//	var yk = Math.sin( t / 1000 * Math.PI * 2) * t / 2000 * 100 + 100;
-
+//	var a = 10 / 70 / 1000;
+//	var v = a * t;	// pixel per ms
 //	x = x + xk;
-//	y = y + yk;
 
