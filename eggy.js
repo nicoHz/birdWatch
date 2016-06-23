@@ -1,12 +1,10 @@
-window.onload = function startAnimation() {
-	var frames = document.getElementById("animation").children;
-	var frameCount = frames.length;
-	var i = 0;
-	setInterval(function () {
-		frames[i % frameCount].style.display = "none";
-		frames[++i % frameCount].style.display = "block";
-	}, 150);
-}
+var images = document.getElementById("animation").children;
+var imageCount = images.length;
+var i = 0;
+setInterval(function () {
+	images[i % imageCount].style.display = "none";
+	images[++i % imageCount].style.display = "block";
+}, 150);
 
 //var himmel = document.querySelector("html");
 //var x = 1;
@@ -22,28 +20,16 @@ window.onload = function startAnimation() {
 // }, 1000 / 50);
 
 
-var frames = document.querySelector("#animation");
-	frames.style.top = "70px"; 
-	var x = 1;
-	var v = .1;
-	var startTime = Date.now(); 
-	setInterval(function() { 
-		var t = Date.now() - startTime;
-		x = (v * t - 200);
-		frames.style.right= x + "px"; 
-		if (x > 1600) {
-			startTime = Date.now();
-		}
-	}, 10);
-
-var frames = document.queryselector("#animation");
-    starttime = 0; 
-function sine() {
-	frames.style.top = 50 * math.sin( starttime ) + 80 + 'px';
-	starttime += 0.05;
+var animation = document.getElementById("animation");
+var x = 1, v = .1;
+var startTime = Date.now(); 
+setInterval(function() { 
+	var t = Date.now() - startTime;
+	x = (v * t - 200);
+	animation.style.top = 50 * Math.sin(t / 2000 * Math.PI * 2) + 80 + 'px';
+	animation.style.right= x + "px"; 
+	if (x > 1600) {
+		startTime = Date.now();
 	}
-	setinterval( sine, 1000/50 );
-
-//	var a = 10 / 70 / 1000;
-//	var v = a * t;	// pixel per ms
+}, 10);
 
