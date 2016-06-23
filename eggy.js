@@ -14,7 +14,7 @@ window.onload = function startAnimation() {
 //var startTime = Date.now(); 
 //timer = setInterval(function() {
 //	var t = Date.now() - startTime;
-//	x = v * t - 155;
+//	x = v * t - 150; 
 //	himmel.style.backgroundPosition = x + "px";
 //	if (x > 0) {
 //		startTime = Date.now();
@@ -29,16 +29,21 @@ var frames = document.querySelector("#animation");
 	var startTime = Date.now(); 
 	setInterval(function() { 
 		var t = Date.now() - startTime;
-		x = v * t - 200;
-
-//	var xk = Math.cos( t * Math.PI * 2) * t / 2000 * 100 + 100;
+		x = (v * t - 200);
 		frames.style.right= x + "px"; 
 		if (x > 1600) {
 			startTime = Date.now();
 		}
 	}, 10);
 
+var frames = document.queryselector("#animation");
+    starttime = 0; 
+function sine() {
+	frames.style.top = 50 * math.sin( starttime ) + 80 + 'px';
+	starttime += 0.05;
+	}
+	setinterval( sine, 1000/50 );
+
 //	var a = 10 / 70 / 1000;
 //	var v = a * t;	// pixel per ms
-//	x = x + xk;
 
