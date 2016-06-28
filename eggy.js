@@ -21,25 +21,25 @@ setInterval(function () {
 
 
 var animation =  document.getElementById("animation");
-var x = 1, v = .1, vy = 0;
+var x = 1, y = 0, vx = .1, ay = 0;
 var startTime = Date.now(); 
 setInterval(function() { 
 	var t = Date.now() - startTime;
-	x = (v * t - 200);
-	animation.style.top = 50 * Math.sin(t / 1000 * Math.PI * 2) + 80 + "px";
+	x = vx * t - 200;
+	animation.style.top = 50 * Math.sin(t / 3000 * Math.PI * 2) + 80 + "px";
 	animation.style.right = x + "px"; 
 	if (x > 1600) {
 		startTime = Date.now();
 	}
-	if (vy >= .1) {
+	if (ay >= .0001) {
 		var t = Date.now() - clickTime;
-		y = vy * t + 200;
+		y = (ay * t) * t + 100; //vy = ay * t;
 		animation.style.top = y + "px";
 	}
-}, 10);
+}, 20); // 1000/20ms = 50 frames per sec (50 fps)
 
 animation.addEventListener("click", function onClick(event) {
-	vy = .1;
+	ay = .0001;
 	clickTime = Date.now();
 }); 
 
