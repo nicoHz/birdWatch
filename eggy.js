@@ -10,7 +10,7 @@ function flap(time) {
 
 function fly(amplitude_px, period_ms) {
 	var animation = document.getElementById("animation");
-	var x = 1, y = 0, vx = .1, ay = 0;
+	var x = 1, y = 0, vx = 0.1, ay = 0;
 	var startTime = Date.now(); 
 	setInterval(function() { 
 		var t = Date.now() - startTime;
@@ -20,18 +20,34 @@ function fly(amplitude_px, period_ms) {
 		if (x > 1600) {
 			startTime = Date.now();
 		}
-		if (ay >= .0001) {
-			var t = Date.now() - clickTime;
+		if (ay >= 0.0001) {
+			t = Date.now() - clickTime;
 			y = (ay * t) * t + 100; //vy = ay * t;
 			animation.style.top = y + "px";
 		}
 	}, 20); // 1000/20ms = 50 frames per sec (50 fps)
 
 	animation.addEventListener("click", function descent(event) {
-		ay = .0001;
+		ay = 0.0001;
 		clickTime = Date.now();
 	}); 
 }
 
+function sky(drift) { 
+	var himmel = document.querySelector("html");
+	var x = 700;
+	var v = drift;
+	var startTime = Date.now(); 
+	timer = setInterval(function() {
+		var t = Date.now() - startTime;
+		x = v * t - 150 ; 
+		himmel.style.backgroundPosition = x + "px";
+		if (x > 700) {
+			startTime = Date.now();
+		}
+	}, 1000/50);
+}
+
 fly(10, 500);
 flap(150);
+sky(0.05);
