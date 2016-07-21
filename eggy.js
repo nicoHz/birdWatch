@@ -55,10 +55,13 @@ function cloudSmall() {
 	setInterval(function() {
 		var t = Date.now() - startTime;
 		x = vx * t - 200;
+
 		clouds[0].style.top =  y + "px";
 		clouds[0].style.left = x + "px";
+
 		clouds[1].style.top = y + "px";
 		clouds[1].style.left = (x + 200) + "px";
+
 		clouds[2].style.top = (y + 50) + "px";
 		clouds[2].style.left = (x + 300) + "px";
 	
