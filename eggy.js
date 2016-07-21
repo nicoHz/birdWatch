@@ -21,9 +21,9 @@ function fly(amplitude_px, period_ms) {
 		animation.style.right = x + "px"; 
 		if (x > document.body.clientWidth) {
 			if (!restartTimer) {
-			startTime = Date.now();
+				startTime = Date.now();
+			}
 		}
-	}
 		if (ay >= 0.0001) {
 			t = Date.now() - clickTime;
 			y = (ay * t) * t + 100; //vy = ay * t;
@@ -31,11 +31,11 @@ function fly(amplitude_px, period_ms) {
 		}
 		if (y > screen.height && !restartTimer) {
 			restartTimer = setTimeout(function() {
-		  startTime = Date.now();
-		  restartTimer = null;
+				startTime = Date.now();
+				restartTimer = null;
 				y = 0;
 				ay = 0;
-				}, 1000);
+			}, 1000);
 		}
 	}, 20); // 1000/20ms = 50 frames per sec (50 fps)
 
@@ -45,21 +45,49 @@ function fly(amplitude_px, period_ms) {
 	}); 
 }
 
-// function sky(drift) { 
-//	var himmel = document.querySelector("html");
-//	var x = 700;
-//	var v = drift;
-//	var startTime = Date.now(); 
-//	timer = setInterval(function() {
-//		var t = Date.now() - startTime;
-//		x = v * t - 150 ; 
-//		himmel.style.backgroundPosition = x + "px";
-//		if (x > 700) {
-//			startTime = Date.now();
-//		}
-//	}, 1000/50);
-//}
+function cloudSmall() { 
+	var clouds = document.getElementsByClassName("cloudSmall");
+	console.log(clouds);
+	var x = 1, vx = 0.1, y = 0;
+	var startTime = Date.now();
+	var restartTimer = null;
+
+	setInterval(function() {
+		var t = Date.now() - startTime;
+		x = vx * t - 200;
+		clouds[0].style.top =  y + "px";
+		clouds[0].style.left = x + "px";
+		clouds[1].style.top = y + "px";
+		clouds[1].style.left = (x + 200) + "px";
+		clouds[2].style.top = (y + 50) + "px";
+		clouds[2].style.left = (x + 300) + "px";
+	
+		if (x > document.body.clientWidth) {
+			if (!restartTimer) {
+				startTime = Date.now();
+			}
+		}
+	});
+}
+
+/*
+function sky(drift) { 
+	var himmel = document.querySelector("html");
+	var x = 700;
+	var v = drift;
+	var startTime = Date.now(); 
+	timer = setInterval(function() {
+		var t = Date.now() - startTime;
+		x = v * t - 150 ; 
+		himmel.style.backgroundPosition = x + "px";
+		if (x > 700) {
+			startTime = Date.now();
+		}
+	}, 1000/50);
+}
+*/
 
 fly(10, 500);
 flap(150);
-sky(0.05);
+cloudSmall();
+// sky(0.05);

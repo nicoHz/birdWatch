@@ -10,13 +10,29 @@ div {
 	display: block;
 	position: absolute;
 }
+.cloudSmall {
+	height: 200px;
+	width: 400px;
+	background-color: pink;
+	opacity: 0.8;
+}
+
+
+.cloudMedium {
+	height: 600px;
+	width: 400px;
+	background-color: green;
+	top: 300px;
+	left: 50px;
+	opacity: 0.8;
+}
 
 #animation img {
 	display: none;
 }
 
-.container h1 {
+h1 {
 	color: #FFCC00;
 	font-family: Verdana, sans-serif;
 	text-transform: uppercase;
-	}
+}
