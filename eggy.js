@@ -73,24 +73,33 @@ function cloudSmall() {
 	});
 }
 
-/*
-function sky(drift) { 
-	var himmel = document.querySelector("html");
-	var x = 700;
-	var v = drift;
-	var startTime = Date.now(); 
-	timer = setInterval(function() {
-		var t = Date.now() - startTime;
-		x = v * t - 150 ; 
-		himmel.style.backgroundPosition = x + "px";
-		if (x > 700) {
-			startTime = Date.now();
-		}
-	}, 1000/50);
-}
+function cloudMedium() { 
+	var clouds = document.getElementsByClassName("cloudMedium");
+	console.log(clouds);
+	var cloudCount = clouds.length;
+/*	var x = 20, vx = 0.5, y = 0;
+	var startTime = Date.now();
+	var restartTimer = null;
+*/	var i = 0;
+	
+	setInterval(function() {
+/*		var t = Date.now() - startTime;
+		x = vx * t - 200;
 */
+		clouds[i % cloudCount].style.display = "none";
+		clouds[++i % cloudCount].style.display = "block";
+	
+/*		if (x > document.body.clientWidth) {
+			if (!restartTimer) {
+				startTime = Date.now();
+			}
+		}
+*/	});
+}
+
 
 fly(10, 500);
 flap(150);
 cloudSmall();
+cloudMedium();
 // sky(0.05);
