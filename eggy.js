@@ -47,7 +47,6 @@ function fly(amplitude_px, period_ms) {
 
 function cloudSmall() { 
 	var clouds = document.getElementsByClassName("cloudSmall");
-	console.log(clouds);
 	var x = 1, vx = 0.1, y = 0;
 	var startTime = Date.now();
 	var restartTimer = null;
@@ -73,33 +72,52 @@ function cloudSmall() {
 	});
 }
 
-function cloudMedium() { 
+function cloudMediumDrift(
+	altitude,
+	driftingCloudVelocity,
+	msBetweenFrames
+) { 
 	var clouds = document.getElementsByClassName("cloudMedium");
 	console.log(clouds);
-	var cloudCount = clouds.length;
-/*	var x = 20, vx = 0.5, y = 0;
+	
+	var x, y;
+	var vy = 0;
+	
 	var startTime = Date.now();
 	var restartTimer = null;
-*/	var i = 0;
 	
-	setInterval(function() {
-/*		var t = Date.now() - startTime;
-		x = vx * t - 200;
-*/
-		clouds[i % cloudCount].style.display = "none";
-		clouds[++i % cloudCount].style.display = "block";
+	var i;
+	var cloudCount = clouds.length;
 	
-/*		if (x > document.body.clientWidth) {
+	function drifting() {
+		var t = Date.now() - startTime;
+		x = driftingCloudVelocity * t;
+		y = vy * t + altitude;
+
+		for (i = 0; i < clouds.length; i++) {
+			clouds[i].style.left = x + "px";
+			clouds[i].style.top = y + "px";
+		}	
+				
+		if (x > document.body.clientWidth) {
 			if (!restartTimer) {
 				startTime = Date.now();
 			}
 		}
-*/	});
+	} 
+
+	var timer = setInterval(drifting, msBetweenFrames);
+
 }
 
 
 fly(10, 500);
 flap(150);
 cloudSmall();
-cloudMedium();
-// sky(0.05);
+
+cloudMediumDrift(
+	200,	// altitude (in px from top)  
+	0.2,	// horizontal velocity in pixel per ms
+	20		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
+);
+
