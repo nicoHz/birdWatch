@@ -75,7 +75,8 @@ function cloudSmall() {
 function cloudMediumDrift(
 	altitude,
 	driftingCloudVelocity,
-	msBetweenFrames
+	msBetweenFrames,
+	cloudMedium
 ) { 
 	var clouds = document.getElementsByClassName("cloudMedium");
 	console.log(clouds);
@@ -94,7 +95,7 @@ function cloudMediumDrift(
 		x = driftingCloudVelocity * t;
 		y = vy * t + altitude;
 
-		for (i = 0; i < clouds.length; i++) {
+		for (i = 0; i < clouds.length; i++) { 
 			clouds[i].style.left = x + "px";
 			clouds[i].style.top = y + "px";
 		}	
@@ -117,7 +118,22 @@ cloudSmall();
 
 cloudMediumDrift(
 	200,	// altitude (in px from top)  
+	0.7,	// horizontal velocity in pixel per ms
+	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
+	[0]
+);
+
+cloudMediumDrift(
+	400,	// altitude (in px from top)  
 	0.2,	// horizontal velocity in pixel per ms
-	20		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
+	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
+	[1]
+);
+
+cloudMediumDrift(
+	50,	// altitude (in px from top)  
+	0.9,	// horizontal velocity in pixel per ms
+	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
+	[2]
 );
 
