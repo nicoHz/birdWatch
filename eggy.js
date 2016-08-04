@@ -45,40 +45,15 @@ function fly(amplitude_px, period_ms) {
 	}); 
 }
 
-function cloudSmall() { 
-	var clouds = document.getElementsByClassName("cloudSmall");
-	var x = 1, vx = 0.1, y = 0;
-	var startTime = Date.now();
-	var restartTimer = null;
-
-	setInterval(function() {
-		var t = Date.now() - startTime;
-		x = vx * t - 200;
-
-		clouds[0].style.top =  y + "px";
-		clouds[0].style.left = x + "px";
-
-		clouds[1].style.top = y + "px";
-		clouds[1].style.left = (x + 200) + "px";
-
-		clouds[2].style.top = (y + 50) + "px";
-		clouds[2].style.left = (x + 300) + "px";
-	
-		if (x > document.body.clientWidth) {
-			if (!restartTimer) {
-				startTime = Date.now();
-			}
-		}
-	});
-}
-
 function cloudMediumDrift(
 	altitude,
 	driftingCloudVelocity,
 	msBetweenFrames,
-	cloudMedium
+	cloudIndex,
+	xOffset
 ) { 
 	var clouds = document.getElementsByClassName("cloudMedium");
+	var cloud = clouds[cloudIndex];
 	console.log(clouds);
 	
 	var x, y;
@@ -87,19 +62,14 @@ function cloudMediumDrift(
 	var startTime = Date.now();
 	var restartTimer = null;
 	
-	var i;
-	var cloudCount = clouds.length;
-	
 	function drifting() {
 		var t = Date.now() - startTime;
-		x = driftingCloudVelocity * t;
+		x = driftingCloudVelocity * t + xOffset;
 		y = vy * t + altitude;
 
-		for (i = 0; i < clouds.length; i++) { 
-			clouds[i].style.left = x + "px";
-			clouds[i].style.top = y + "px";
-		}	
-				
+		cloud.style.left = x + "px";
+		cloud.style.top = y + "px";
+
 		if (x > document.body.clientWidth) {
 			if (!restartTimer) {
 				startTime = Date.now();
@@ -114,26 +84,19 @@ function cloudMediumDrift(
 
 fly(10, 500);
 flap(150);
-cloudSmall();
 
 cloudMediumDrift(
 	200,	// altitude (in px from top)  
 	0.7,	// horizontal velocity in pixel per ms
 	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
-	[0]
+	0,		// index of the cloud
+	50		// horizontal start position of the cloud
 );
 
 cloudMediumDrift(
-	400,	// altitude (in px from top)  
-	0.2,	// horizontal velocity in pixel per ms
+	100,	// altitude (in px from top)  
+	0.4,	// horizontal velocity in pixel per ms
 	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
-	[1]
+	1,		// index of the cloud
+	2
 );
-
-cloudMediumDrift(
-	50,	// altitude (in px from top)  
-	0.9,	// horizontal velocity in pixel per ms
-	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
-	[2]
-);
-
