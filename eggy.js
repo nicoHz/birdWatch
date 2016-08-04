@@ -50,12 +50,13 @@ function cloudDrift(
 	altitude,
 	driftingCloudVelocity,
 	msBetweenFrames,
-	cloudIndex,
 	xOffset
 ) { 
-	var clouds = document.getElementsByClassName(className);
-	var cloud = clouds[cloudIndex];
-	console.log(clouds);
+	var cloud = document.createElement("div");
+	cloud.classList.add(className);
+	var bird = document.getElementById("animation");
+	document.body.insertBefore(cloud, bird);
+	console.log(cloud);
 	
 	var x, y;
 	var vy = 0;
@@ -81,14 +82,9 @@ function cloudDrift(
 	var timer = setInterval(drifting, msBetweenFrames);
 
 }
-
-
-fly(10, 500);
-flap(150);
-
+ 
 function cloudSmall(
 	altitude,
-	cloudIndex,
 	xOffset
 ) {
 	cloudDrift(
@@ -96,32 +92,13 @@ function cloudSmall(
 		altitude,
 		0.01,	// horizontal velocity in pixel per ms
 		20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
-		cloudIndex,
 		xOffset
 	);
 }
 
-cloudSmall(
-	20,		// altitude (in px from top)  
-	0,		// index of the cloud
-	20		// horizontal start position of the cloud
-);
-
-cloudSmall(
-	30,		// altitude (in px from top)  
-	1,		// index of the cloud
-	50		// horizontal start position of the cloud
-);
-
-cloudSmall(
-	20,		// altitude (in px from top)  
-	2,		// index of the cloud
-	350		// horizontal start position of the cloud
-);
 
 function cloudMedium(
 	altitude,
-	cloudIndex,
 	xOffset
 ) {
 	cloudDrift(
@@ -129,26 +106,45 @@ function cloudMedium(
 		altitude,  
 		0.4,	// horizontal velocity in pixel per ms
 		20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
-		cloudIndex,
 		xOffset
 	);
 }
 
+
+// ----------------------  
+
+fly(10, 500);
+flap(150);
+
+
+cloudSmall(
+	20,		// altitude (in px from top)  
+	20		// horizontal start position of the cloud
+);
+
+cloudSmall(
+	30,		// altitude (in px from top)  
+	50		// horizontal start position of the cloud
+);
+
+cloudSmall(
+	20,		// altitude (in px from top)  
+	350		// horizontal start position of the cloud
+);
+
+
 cloudMedium(
 	100,	// altitude (in px from top)
-	0,		// index of the cloud
 	50		// horizontal start position of the cloud
 );
 
 cloudMedium(
 	100,	// altitude (in px from top)  
-	0,		// index of the cloud
 	50		// horizontal start position of the cloud
 );
 
 cloudMedium(
 	120,	// altitude (in px from top)  
-	1,		// index of the cloud
 	2
 );
 
@@ -157,6 +153,5 @@ cloudDrift(
 	200,	// altitude (in px from top)  
 	0.7,	// horizontal velocity in pixel per ms
 	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
-	0,		// index of the cloud
 	0
 );
