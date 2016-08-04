@@ -23,6 +23,13 @@ div {
 	opacity: 0.8;
 }
 
+.cloudLarge {
+	height: 200px;
+	width: 200px;
+	background-color: yellow;
+	opacity: 0.4;
+}
+
 #animation img {
 	display: none;
 }

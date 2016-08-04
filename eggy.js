@@ -45,14 +45,15 @@ function fly(amplitude_px, period_ms) {
 	}); 
 }
 
-function cloudMediumDrift(
+function cloudDrift(
+	className,
 	altitude,
 	driftingCloudVelocity,
 	msBetweenFrames,
 	cloudIndex,
 	xOffset
 ) { 
-	var clouds = document.getElementsByClassName("cloudMedium");
+	var clouds = document.getElementsByClassName(className);
 	var cloud = clouds[cloudIndex];
 	console.log(clouds);
 	
@@ -82,21 +83,34 @@ function cloudMediumDrift(
 }
 
 
+
+
 fly(10, 500);
 flap(150);
 
-cloudMediumDrift(
+cloudDrift(
+	"cloudMedium",
 	200,	// altitude (in px from top)  
-	0.7,	// horizontal velocity in pixel per ms
+	0.4,	// horizontal velocity in pixel per ms
 	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
 	0,		// index of the cloud
 	50		// horizontal start position of the cloud
 );
 
-cloudMediumDrift(
+cloudDrift(
+	"cloudMedium",
 	100,	// altitude (in px from top)  
 	0.4,	// horizontal velocity in pixel per ms
 	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
 	1,		// index of the cloud
 	2
+);
+
+cloudDrift(
+	"cloudLarge",
+	100,	// altitude (in px from top)  
+	0.7,	// horizontal velocity in pixel per ms
+	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
+	0,		// index of the cloud
+	0
 );
