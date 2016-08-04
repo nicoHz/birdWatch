@@ -83,32 +83,78 @@ function cloudDrift(
 }
 
 
-
-
 fly(10, 500);
 flap(150);
 
-cloudDrift(
-	"cloudMedium",
-	200,	// altitude (in px from top)  
-	0.4,	// horizontal velocity in pixel per ms
-	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
+function cloudSmall(
+	altitude,
+	cloudIndex,
+	xOffset
+) {
+	cloudDrift(
+		"cloudSmall",
+		altitude,
+		0.01,	// horizontal velocity in pixel per ms
+		20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
+		cloudIndex,
+		xOffset
+	);
+}
+
+cloudSmall(
+	20,		// altitude (in px from top)  
+	0,		// index of the cloud
+	20		// horizontal start position of the cloud
+);
+
+cloudSmall(
+	30,		// altitude (in px from top)  
+	1,		// index of the cloud
+	50		// horizontal start position of the cloud
+);
+
+cloudSmall(
+	20,		// altitude (in px from top)  
+	2,		// index of the cloud
+	350		// horizontal start position of the cloud
+);
+
+function cloudMedium(
+	altitude,
+	cloudIndex,
+	xOffset
+) {
+	cloudDrift(
+		"cloudMedium",
+		altitude,  
+		0.4,	// horizontal velocity in pixel per ms
+		20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
+		cloudIndex,
+		xOffset
+	);
+}
+
+cloudMedium(
+	100,	// altitude (in px from top)
 	0,		// index of the cloud
 	50		// horizontal start position of the cloud
 );
 
-cloudDrift(
-	"cloudMedium",
+cloudMedium(
 	100,	// altitude (in px from top)  
-	0.4,	// horizontal velocity in pixel per ms
-	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
+	0,		// index of the cloud
+	50		// horizontal start position of the cloud
+);
+
+cloudMedium(
+	120,	// altitude (in px from top)  
 	1,		// index of the cloud
 	2
 );
 
 cloudDrift(
 	"cloudLarge",
-	100,	// altitude (in px from top)  
+	200,	// altitude (in px from top)  
 	0.7,	// horizontal velocity in pixel per ms
 	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
 	0,		// index of the cloud
