@@ -45,7 +45,7 @@ function fly(amplitude_px, period_ms) {
 	}); 
 }
 
-function cloudDrift(
+function createCloud(
 	className,
 	altitude,
 	driftingCloudVelocity,
@@ -54,10 +54,8 @@ function cloudDrift(
 ) { 
 	var cloud = document.createElement("div");
 	cloud.classList.add(className);
-	var bird = document.getElementById("animation");
-	document.body.insertBefore(cloud, bird);
 	console.log(cloud);
-	
+
 	var x, y;
 	var vy = 0;
 	
@@ -80,20 +78,23 @@ function cloudDrift(
 	} 
 
 	var timer = setInterval(drifting, msBetweenFrames);
-
+	return cloud;
 }
  
 function cloudSmall(
 	altitude,
 	xOffset
 ) {
-	cloudDrift(
+	var cloud = createCloud(
 		"cloudSmall",
 		altitude,
 		0.01,	// horizontal velocity in pixel per ms
 		20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
 		xOffset
 	);
+
+	var bird = document.getElementById("animation");
+	document.body.insertBefore(cloud, bird);
 }
 
 
@@ -101,15 +102,31 @@ function cloudMedium(
 	altitude,
 	xOffset
 ) {
-	cloudDrift(
+	var cloud = createCloud(
 		"cloudMedium",
 		altitude,  
 		0.4,	// horizontal velocity in pixel per ms
 		20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
 		xOffset
-	);
+	)
+
+	var bird = document.getElementById("animation");
+	document.body.insertBefore(cloud, bird);
 }
 
+function cloudLarge (
+	altitude,
+	xOffset
+) {
+	var cloud = createCloud(
+		"cloudLarge",
+		altitude,	// altitude (in px from top)  
+		0.7,	// horizontal velocity in pixel per ms
+		20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
+		xOffset
+	);
+	document.body.appendChild(cloud);
+}
 
 // ----------------------  
 
@@ -148,10 +165,7 @@ cloudMedium(
 	2
 );
 
-cloudDrift(
-	"cloudLarge",
+cloudLarge(
 	200,	// altitude (in px from top)  
-	0.7,	// horizontal velocity in pixel per ms
-	20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
 	0
 );
