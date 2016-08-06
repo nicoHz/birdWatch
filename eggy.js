@@ -58,23 +58,22 @@ function createCloud(
 
 	var x, y;
 	var vy = 0;
-	
 	var startTime = Date.now();
 	var restartTimer = null;
 	
 	function drifting() {
 		var t = Date.now() - startTime;
 		x = driftingCloudVelocity * t + xOffset;
-		y = vy * t + altitude;
-
 		cloud.style.left = x + "px";
-		cloud.style.top = y + "px";
-
+		cloud.style.top = y + "px"; 	
 		if (x > document.body.clientWidth) {
 			if (!restartTimer) {
 				startTime = Date.now();
+				xOffset = 0 - cloud.offsetWidth - 200;
+				console.log(cloud.offsetWidth);
 			}
 		}
+		y = vy * t + altitude;		
 	} 
 
 	var timer = setInterval(drifting, msBetweenFrames);
@@ -105,10 +104,10 @@ function cloudMedium(
 	var cloud = createCloud(
 		"cloudMedium",
 		altitude,  
-		0.4,	// horizontal velocity in pixel per ms
+		0.1,	// horizontal velocity in pixel per ms
 		20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
 		xOffset
-	)
+	);
 
 	var bird = document.getElementById("animation");
 	document.body.insertBefore(cloud, bird);
@@ -121,7 +120,7 @@ function cloudLarge (
 	var cloud = createCloud(
 		"cloudLarge",
 		altitude,	// altitude (in px from top)  
-		0.7,	// horizontal velocity in pixel per ms
+		0.2,	// horizontal velocity in pixel per ms
 		20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
 		xOffset
 	);
@@ -136,7 +135,7 @@ flap(150);
 
 cloudSmall(
 	20,		// altitude (in px from top)  
-	20		// horizontal start position of the cloud
+	200		// horizontal start position of the cloud
 );
 
 cloudSmall(
@@ -162,10 +161,10 @@ cloudMedium(
 
 cloudMedium(
 	120,	// altitude (in px from top)  
-	2
+	800
 );
 
 cloudLarge(
 	200,	// altitude (in px from top)  
-	0
+	440
 );
