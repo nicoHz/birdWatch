@@ -8,26 +8,25 @@ div {
 	display: block;
 	position: absolute;
 }
-.cloudSmall {
-	height: 200px;
-	width: 400px;
-	background-color: pink;
-	opacity: 0.8;
+img.cloudSmall {
+	height: 20px;
+	width: 30px;
+	position: absolute;
 }
 
 
-.cloudMedium {
-	height: 600px;
-	width: 400px;
-	background-color: green;
-	opacity: 0.8;
-}
-
-.cloudLarge {
-	height: 200px;
+img.cloudMedium {
+	height: 100px;
 	width: 200px;
-	background-color: yellow;
+	opacity: 0.8;
+	position: absolute;
+}
+
+img.cloudLarge {
+	height: 200px;
+	width: 300px;
 	opacity: 0.4;
+	position: absolute;
 }
 
 #animation img {

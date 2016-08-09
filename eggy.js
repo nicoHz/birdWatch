@@ -47,14 +47,15 @@ function fly(amplitude_px, period_ms) {
 
 function createCloud(
 	className,
+	cloudImages,
 	altitude,
 	driftingCloudVelocity,
 	msBetweenFrames,
 	xOffset
 ) { 
-	var cloud = document.createElement("div");
+	var cloud = document.createElement("img");
 	cloud.classList.add(className);
-	console.log(cloud);
+	cloud.src = cloudImages;
 
 	var x, y;
 	var vy = 0;
@@ -70,7 +71,6 @@ function createCloud(
 			if (!restartTimer) {
 				startTime = Date.now();
 				xOffset = 0 - cloud.offsetWidth - 200;
-				console.log(cloud.offsetWidth);
 			}
 		}
 		y = vy * t + altitude;		
@@ -81,11 +81,13 @@ function createCloud(
 }
  
 function cloudSmall(
+	cloudImages,
 	altitude,
 	xOffset
 ) {
 	var cloud = createCloud(
 		"cloudSmall",
+		cloudImages,
 		altitude,
 		0.01,	// horizontal velocity in pixel per ms
 		20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
@@ -96,13 +98,14 @@ function cloudSmall(
 	document.body.insertBefore(cloud, bird);
 }
 
-
 function cloudMedium(
+	cloudImages,
 	altitude,
 	xOffset
 ) {
 	var cloud = createCloud(
 		"cloudMedium",
+		cloudImages,
 		altitude,  
 		0.1,	// horizontal velocity in pixel per ms
 		20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
@@ -114,11 +117,13 @@ function cloudMedium(
 }
 
 function cloudLarge (
+	cloudImages,
 	altitude,
 	xOffset
 ) {
 	var cloud = createCloud(
 		"cloudLarge",
+		cloudImages,
 		altitude,	// altitude (in px from top)  
 		0.2,	// horizontal velocity in pixel per ms
 		20,		// ms | 1000/20 = 50 frames per sec (frame rate = 50fps)
@@ -134,37 +139,46 @@ flap(150);
 
 
 cloudSmall(
+	"images/cloud3.png",
 	20,		// altitude (in px from top)  
 	200		// horizontal start position of the cloud
 );
 
+
 cloudSmall(
+	"images/cloud3.png",
 	30,		// altitude (in px from top)  
 	50		// horizontal start position of the cloud
 );
 
 cloudSmall(
+	"images/cloud3.png",
 	20,		// altitude (in px from top)  
 	350		// horizontal start position of the cloud
 );
 
 
 cloudMedium(
+	"images/cloud3.png",
 	100,	// altitude (in px from top)
 	50		// horizontal start position of the cloud
 );
 
 cloudMedium(
+	"images/cloud3.png",
 	100,	// altitude (in px from top)  
 	50		// horizontal start position of the cloud
 );
 
 cloudMedium(
+	"images/cloud3.png",
 	120,	// altitude (in px from top)  
 	800
 );
 
 cloudLarge(
+	"images/cloud3.png",
 	200,	// altitude (in px from top)  
 	440
 );
+
