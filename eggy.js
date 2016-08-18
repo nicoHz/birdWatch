@@ -3,15 +3,15 @@ function flap(time) {
 	var imageCount = images.length;
 	var i = 0;
 	setInterval(function() {
-		images[i % imageCount].style.display = "none";
-		images[++i % imageCount].style.display = "block";
+		images[i % imageCount].style.display = "none"; // % = modulo
+		images[++i % imageCount].style.display = "block"; // ++i prefix increment operator 
 	}, time);
 }
 
 function fly(amplitude_px, period_ms) {
 	var animation = document.getElementById("animation");
 	var x = 1, y = 0, vx = 0.1, ay = 0;
-	var startTime = Date.now();
+	var startTime = Date.now(); //startTime ist der Rückgabewert der Funktion now
 	var restartTimer = null;
 
 	setInterval(function() { 
@@ -26,7 +26,13 @@ function fly(amplitude_px, period_ms) {
 		}
 		if (ay >= 0.0001) {
 			t = Date.now() - clickTime;
-			y = (ay * t) * t + 100; //vy = ay * t;
+			
+			// Variante A
+			y = ay * t * t + 100;
+			// Variante B
+			// vy = ay * t;
+			// y = vy * t;
+
 			animation.style.top = y + "px";
 		}
 		if (y > screen.height && !restartTimer) {
