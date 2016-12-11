@@ -1,3 +1,26 @@
+var pages = document.getElementsByClassName("page");                               
+var lastPageNumber = pages.length - 1;                                             
+for (i = 1; i < pages.length; i++) {                                               
+	pages[i].style.display = "none";                                               
+	pages[i].addEventListener("click", showPage);                                  
+}                                                                                  
+
+function showPage() {                                                              
+	for (i = 0; i < pages.length; i++) {                                           
+		if (pages[i].style.display != "none") {                                    
+			if (i == lastPageNumber) {                                             
+				pages[lastPageNumber].style.display = "none";                      
+				pages[0].style.display = "block";                                  
+			} else {                                                               
+				pages[i].style.display = "none";                                   
+				pages[++i].style.display = "block";                                
+			}                                                                      
+		}                                                                          
+	}                                                                              
+}                                                                                  
+pages[0].addEventListener("click", showPage);                                      
+
+/*
 function flap(time) { 
 	var images = document.getElementById("animation").children;
 	var imageCount = images.length;
@@ -187,4 +210,4 @@ cloudLarge(
 	200,	// altitude (in px from top)  
 	440
 );
-
+*/

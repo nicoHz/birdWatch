@@ -1,6 +1,6 @@
 
 body {
-	background-color: blue;
+	background-color: #E6BC49;
 }
 
 
@@ -8,6 +8,8 @@ div {
 	display: block;
 	position: absolute;
 }
+
+/*
 img.cloudSmall {
 	height: 20px;
 	width: 30px;
@@ -38,3 +40,4 @@ h1 {
 	font-family: Verdana, sans-serif;
 	text-transform: uppercase;
 }
+*/
