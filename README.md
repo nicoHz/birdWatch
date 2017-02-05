@@ -1,18 +1,14 @@
-# click-book
-
-story telling in the browser with animation in js
-
 
 ### process-images.sh
 
 Even if they are tiny, bash scripts a great in optimizing personal workflow. 
-The following script unzips svg files and prettifies them into xml just in one go. 
+The following script unzips svg files and prettifies them in one go. 
 To give an example: 
 A bunch of svg files is zipped in a directory "Bla-Images". Beside the given file format ".svg",
 the file name always includes letters and a number, like `blaBla1.svg`. But interested in 
 simplify coding, letters aren't needed. Numbers will rule the ascending order. And wouldn't it benice, to work with some xml prettified svg's? 
 
-```
+```sh
 #!/bin/bash
 
 set -e
@@ -32,14 +28,14 @@ in this case `#!/bin/bash`.
 Without the shebang, it's up to the user to chose an interpreter, every single time.
 It tells the shell, which interpreter should be used for this file, 
 right here it's bash, given in the path `/bin/bash`. For now `$PATH` as environment variabe is 
-out of scope, that's why the script has to be located in one directory next to the zip directory
-and the program has to be executed with `./scriptname.sh nameOfZipDirectory`.
+out of scope, that's why the script has to be located in one directory next to the zip file
+and the program has to be executed with `./scriptname.sh nameOfZipFile`.
 
 To follow the lines of the given script, `set -e` makes sure that the script will stop, if one of the following commands fails. 
 
 `unzip` is used as a command. It does what it says, unzipping files. 
-`$n` sets the number of accepted parameters. This program will only accept
-one paramter (`$1`). The conditional expression `-d` proofs, if the given file name exits and is a directory. All the magic happen the directory `tmp`, currently created. 
+`$n` sets the number of chosen parameters. This program will only take
+the firt given paramter (`$1`). The conditional expression `-d` makes sure that the file will be unzipped in a directory `tmp` that is currently created. 
 
 The `pushd` command saves the current working directory in memory. 
 
