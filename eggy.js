@@ -20,7 +20,7 @@ function showPage() {
 }                                                                                  
 pages[0].addEventListener("click", showPage);                                      
 
-/*
+
 function flap(time) { 
 	var images = document.getElementById("animation").children;
 	var imageCount = images.length;
@@ -210,4 +210,4 @@ cloudLarge(
 	200,	// altitude (in px from top)  
 	440
 );
-*/
+
