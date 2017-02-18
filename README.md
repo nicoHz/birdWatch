@@ -1,3 +1,3 @@
 # click-book
 
-story telling in the browser with animation in js
+Just some animation in the browser using js.
